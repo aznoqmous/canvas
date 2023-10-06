@@ -1,11 +1,12 @@
-import Drawable from "../shapes/Drawable"
+import Drawable from "../drawables/Drawable"
 
 export default class Layer extends Drawable {
     constructor(opts={}){
         super(Object.assign({
             width: 800,
             height: 600,
-            scale: 1
+            scale: 1,
+            background: null
         }, opts))
         this._build()
         this.drawables = []
@@ -46,7 +47,11 @@ export default class Layer extends Drawable {
     }
 
     clear(){
-        this.ctx.clearRect(0, 0, this.width, this.height)
+        if(this.opts.background && this.opts.background != "transparent") {
+            this.ctx.fillStyle = this.opts.background
+            this.ctx.fillRect(0, 0, this.width, this.height)
+        }
+        else this.ctx.clearRect(0, 0, this.width, this.height)
         return this
     }
 
