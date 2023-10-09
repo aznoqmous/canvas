@@ -7,7 +7,7 @@ export default class Circle extends Drawable {
             radius: 10,
             startAngle: 0,
             endAngle: 2 * Math.PI,
-        }));
+        }, opts));
     }
     get radius(){
         return this.opts.radius
@@ -35,7 +35,7 @@ export default class Circle extends Drawable {
 
     _draw(ctx){
         ctx.beginPath()
-        ctx.arc(this.pos.x, this.pos.y, this.radius, this.opts.startAngle, this.opts.endAngle)
+        ctx.arc(this.pos.x, this.pos.y, this.radius, this.startAngle, this.endAngle)
         ctx.stroke()
         ctx.fill()
     }

@@ -11,7 +11,10 @@ document.addEventListener('DOMContentLoaded', async ()=>{
         height: 400,
         background: "white"
     })
-
+    layer.appendTo(document.body)
+    layer.add(new Circle({fillStyle: "red"}))
+    layer.render()
+    return;
     const picture = new Picture({
         src: "image.jpg",
         objectFit: "cover",
