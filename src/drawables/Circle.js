@@ -2,6 +2,13 @@ import Drawable from "./Drawable";
 
 export default class Circle extends Drawable {
 
+    constructor(opts={}) {
+        super(Object.assign({
+            radius: 10,
+            startAngle: 0,
+            endAngle: 2 * Math.PI,
+        }));
+    }
     get radius(){
         return this.opts.radius
     }
@@ -10,19 +17,38 @@ export default class Circle extends Drawable {
         this.opts.radius = value
     }
 
-    setRadius(value){
-        this.radius = value
-        return this
+    get startAngle(){
+        return this.opts.startAngle
+    }
+
+    set startAngle(value){
+        this.opts.startAngle = value
+    }
+
+    get endAngle(){
+        return this.opts.endAngle
+    }
+
+    set endAngle(value){
+        this.opts.endAngle = value
     }
 
     _draw(ctx){
         ctx.beginPath()
-        ctx.arc(this.pos.x, this.pos.y, this.radius, 0, 2*Math.PI)
+        ctx.arc(this.pos.x, this.pos.y, this.radius, this.opts.startAngle, this.opts.endAngle)
         ctx.stroke()
         ctx.fill()
     }
     setRadius(radius){
         this.radius = radius
+        return this
+    }
+    setStartAngle(startAngle){
+        this.startAngle = startAngle
+        return this
+    }
+    setEndAngle(endAngle){
+        this.endAngle = endAngle
         return this
     }
 }

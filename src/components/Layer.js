@@ -44,6 +44,7 @@ export default class Layer extends Drawable {
         this.ctx = this.c.getContext('2d')
         this.c.width = this.opts.width
         this.c.height = this.opts.height
+        this.clear()
     }
 
     clear(){
@@ -84,6 +85,10 @@ export default class Layer extends Drawable {
             drawable.draw(this)
         })
         return this
+    }
+
+    appendTo(element){
+        element.append(this.element)
     }
 
     clone(){

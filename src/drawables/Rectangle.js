@@ -1,11 +1,20 @@
 import Drawable from "./Drawable";
 
 export default class Rectangle extends Drawable {
-    get width(){
+    get width() {
         return this.opts.width
     }
-    get height(){
+
+    set width(value) {
+        this.opts.width = value
+    }
+
+    get height() {
         return this.opts.height
+    }
+
+    set height(value) {
+        this.opts.height = value
     }
     _draw(ctx){
         ctx.translate(this.pos.x, this.pos.y)
