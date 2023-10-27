@@ -56,8 +56,8 @@ export default class Layer extends Drawable {
         return this
     }
 
-    add(drawable){
-        this.drawables.push(drawable)
+    add(...drawables){
+        drawables.map(d => this.drawables.push(d))
         return this
     }
 
